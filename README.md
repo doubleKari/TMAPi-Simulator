@@ -12,9 +12,7 @@ A console-based application that simulates a RESTful API for task management. Th
 - [Usage](#usage)
 - [API Commands](#api-commands)
 - [Development](#development)
-- [Contributing](#contributing)
-- [Team](#team)
-- [License](#license)
+
 
 ## 🎯 Overview
 
@@ -302,81 +300,6 @@ TM-009: Implement CreateTask method with validation
 TM-015: Add POST command parsing for task creation
 ```
 
-### Code Style Guidelines
-
-- Use meaningful variable and method names
-- Follow C# naming conventions (PascalCase for classes/methods, camelCase for variables)
-- Add XML documentation comments for public methods
-- Keep methods focused and single-purpose
-- Use LINQ for collection operations where appropriate
-- Handle exceptions gracefully with try-catch blocks
-- Validate input before processing
-
-### Testing Your Changes
-
-Before submitting a PR:
-
-1. **Build successfully**
-```bash
-   dotnet build
-```
-
-2. **Test the feature manually**
-   - Run the application
-   - Execute commands related to your changes
-   - Verify expected behavior
-
-3. **Test error cases**
-   - Try invalid inputs
-   - Test edge cases
-   - Ensure proper error messages
-
-4. **Check data persistence**
-   - Create data
-   - Restart the application
-   - Verify data loads correctly
-
-### Adding New Features
-
-To add a new feature:
-
-1. Create a GitHub issue with label `enhancement`
-2. Assign an issue number (TM-XXX)
-3. Create a feature branch
-4. Implement the feature following existing patterns
-5. Test thoroughly
-6. Submit a pull request
-7. Request review from team member
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/TM-XXX-description`)
-3. **Commit your changes** (`git commit -m 'TM-XXX: Add feature'`)
-4. **Push to the branch** (`git push origin feature/TM-XXX-description`)
-5. **Open a Pull Request**
-
-### Pull Request Guidelines
-
-- Link the related issue in the PR description
-- Provide a clear description of changes
-- Include examples of how to test the changes
-- Ensure all existing functionality still works
-- Update documentation if needed
-
-## 👥 Team
-
-### Contributors
-
-- **Developer A** - Models, Task Service, Core Commands, Async Operations
-- **Developer B** - DTOs, User/Project Services, Filters, UI/Commands
-
-### Issue Distribution
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed issue assignments and workflow.
-
 ## 📈 Project Milestones
 
 - [x] **Milestone 1**: Foundation & Core Models
@@ -387,44 +310,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed issue assignments and workfl
 - [x] **Milestone 6**: User & Project Management
 - [ ] **Milestone 7**: Async Operations *(Optional)*
 - [ ] **Milestone 8**: Data Persistence
-- [ ] **Bonus**: Advanced Features
-
-## 🔮 Future Enhancements
-
-- [ ] Add task commenting functionality
-- [ ] Implement task tags and labels
-- [ ] Add time tracking for tasks
-- [ ] Create task templates
-- [ ] Add reporting and analytics
-- [ ] Implement user authentication simulation
-- [ ] Add task attachments (file references)
-- [ ] Create task recurrence patterns
-
-## 📖 Learning Resources
-
-After completing this project, you'll be ready for:
-- [ASP.NET Core Web API Tutorial](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api)
-- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
-- [RESTful API Design](https://restfulapi.net/)
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - Inspired by real-world task management systems (Jira, Trello, Asana)
 - Built as a learning project for ASP.NET Core preparation
 - Thanks to the C# and .NET community for excellent documentation
-
-## 📞 Support
-
-If you have questions or run into issues:
-
-1. Check existing [GitHub Issues](https://github.com/your-username/TaskManagementAPI/issues)
-2. Create a new issue with the `question` label
-3. Reach out to team members
-
+  
 ---
 
 **Happy Coding! 🚀**
