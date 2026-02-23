@@ -271,7 +271,7 @@ The API returns status codes similar to HTTP:
 We follow a feature branch workflow:
 ```bash
 # Create a new feature branch
-git checkout -b feature/TM-XXX-brief-description
+git checkout -b feature/TM-XXX
 
 # Make your changes and commit
 git add .
@@ -285,7 +285,7 @@ git push origin feature/TM-XXX-brief-description
 
 ### Commit Message Format
 ```
-TM-XXX: Brief description of change
+[TM-XXX] Brief description of change
 
 Optional longer description explaining:
 - What was changed
