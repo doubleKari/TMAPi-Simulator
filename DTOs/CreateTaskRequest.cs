@@ -8,9 +8,9 @@ namespace TMAPi_Simulator.DTOs
         string Title, 
         string Description, 
         string Priority, 
-        int AssignedToUserId, 
-        int ProjectId, 
-        DateTime DueDate 
+        int? AssignedToUserId, 
+        int? ProjectId, 
+        DateTime? DueDate 
     );
     
 }
