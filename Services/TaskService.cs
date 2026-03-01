@@ -57,7 +57,6 @@ namespace TMAPi_Simulator.Services
             }
             return ApiResponse<List<TaskResponse>>.SuccessResponse(tasks, "Sucess");
         }
-
         public ApiResponse<TaskResponse> GetTaskById(int id)
         {
             var task = _tasks.Find(t => t.Id == id);
@@ -69,7 +68,40 @@ namespace TMAPi_Simulator.Services
             TaskResponse data = task.ToResponse();
             return ApiResponse<TaskResponse>.SuccessResponse(data, "Success");
         }
-            
-        
+        public ApiResponse<TaskResponse> UpdateTaskById(int id, CreateTaskRequest request)
+        {
+            var task = _tasks.Find(t => t.Id == id);
+            if (request == null)
+                return ApiResponse<TaskResponse>.ErrorResponse("Request cannot be null", 400);
+            if (task == null)
+            {
+                return ApiResponse<TaskResponse>.ErrorResponse($"Task with ID: {id} not found!", 404);
+            }
+
+            task.Title = request.Title ?? task.Title;
+            task.Description = request.Description ?? task.Description;
+            task.AssignedToUserId = request.AssignedToUserId ?? task.AssignedToUserId;
+            task.ProjectId = request.ProjectId ?? task.ProjectId;
+            task.DueDate = request.DueDate ?? task.DueDate;
+
+            if (!string.IsNullOrWhiteSpace(request.Priority) && Enum.TryParse(request.Priority, true, out Priority priority))
+            {
+                task.Priority = priority;
+            }
+
+            var response = new TaskResponse
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                Status = task.Status.ToString(),
+                Priority = task.Priority.ToString(),
+                AssignedToUserId = task.AssignedToUserId,
+                ProjectId = task.ProjectId,
+                CreatedDate = task.CreatedDate,
+                DueDate = task.DueDate
+            };
+            return ApiResponse<TaskResponse>.SuccessResponse(response, "Task updated successfully.");
+        }
     }
 }

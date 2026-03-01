@@ -22,16 +22,6 @@ namespace TMAPi_Simulator.DTOs
         [JsonIgnore]
         public DateTime? DueDate { get; set; }
         public string? DueDateFormatted => DueDate?.ToString("MMMM ddd, yyyy hh:mm");
-
-        public string ToJson()
-        {
-            return JsonSerializer.Serialize(this, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-        }
-
-
     };
 }
   
