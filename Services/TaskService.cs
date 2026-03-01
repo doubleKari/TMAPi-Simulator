@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TMAPi_Simulator.DTOs;
+using TMAPi_Simulator.Utils;
 using TMAPi_Simulator.Models;
 using TaskStatus = TMAPi_Simulator.Models.TaskStatus;
 
@@ -43,20 +44,32 @@ namespace TMAPi_Simulator.Services
 
             _tasks.Add(task);
 
-            var response = new TaskResponse
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                Status = task.Status.ToString(),
-                Priority = task.Priority.ToString(),
-                AssignedToUserId = task.AssignedToUserId,
-                ProjectId = task.ProjectId,
-                CreatedDate = task.CreatedDate,
-                DueDate = task.DueDate
-            };
+            var response = task.ToResponse();
 
-            return ApiResponse<TaskResponse>.SuccessResponse(response, "Task created successfully.");
+            return ApiResponse<TaskResponse>.SuccessResponse(response, $"Task {response.Id} created successfully.");
         }
+        public ApiResponse<List<TaskResponse>> GetAllTasks()
+        {
+            List<TaskResponse> tasks = [];
+            foreach (var t in _tasks)
+            {
+                tasks.Add(t.ToResponse()); 
+            }
+            return ApiResponse<List<TaskResponse>>.SuccessResponse(tasks, "Sucess");
+        }
+
+        public ApiResponse<TaskResponse> GetTaskById(int id)
+        {
+            var task = _tasks.Find(t => t.Id == id);
+            if (task == null)
+            {
+                return ApiResponse<TaskResponse>.ErrorResponse($"Task with ID: {id} not found!", 404);
+            }
+
+            TaskResponse data = task.ToResponse();
+            return ApiResponse<TaskResponse>.SuccessResponse(data, "Success");
+        }
+            
+        
     }
 }
