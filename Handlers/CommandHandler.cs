@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TMAPi_Simulator.Handlers
 {
-    internal class Class1
+    public class CommandHandler
     {
     }
 }

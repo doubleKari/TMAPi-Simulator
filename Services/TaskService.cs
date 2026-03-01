@@ -68,7 +68,7 @@ namespace TMAPi_Simulator.Services
             TaskResponse data = task.ToResponse();
             return ApiResponse<TaskResponse>.SuccessResponse(data, "Success");
         }
-        public ApiResponse<TaskResponse> UpdateTaskById(int id, CreateTaskRequest request)
+        public ApiResponse<TaskResponse> UpdateTaskById(int id, UpdateTaskRequest request)
         {
             var task = _tasks.Find(t => t.Id == id);
             if (request == null)
@@ -81,12 +81,16 @@ namespace TMAPi_Simulator.Services
             task.Title = request.Title ?? task.Title;
             task.Description = request.Description ?? task.Description;
             task.AssignedToUserId = request.AssignedToUserId ?? task.AssignedToUserId;
-            task.ProjectId = request.ProjectId ?? task.ProjectId;
             task.DueDate = request.DueDate ?? task.DueDate;
 
             if (!string.IsNullOrWhiteSpace(request.Priority) && Enum.TryParse(request.Priority, true, out Priority priority))
             {
                 task.Priority = priority;
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.Status) && Enum.TryParse(request.Status, true, out TaskStatus status))
+            {
+                task.Status = status;
             }
 
             var response = new TaskResponse
@@ -102,6 +106,17 @@ namespace TMAPi_Simulator.Services
                 DueDate = task.DueDate
             };
             return ApiResponse<TaskResponse>.SuccessResponse(response, "Task updated successfully.");
+        }
+        public ApiResponse<TaskResponse> DeleteTask(int id)
+        {
+            var task = _tasks.Find(t => t.Id == id);
+
+            if (task == null)
+                return ApiResponse<TaskResponse>.ErrorResponse($"Task with ID: {id} not found!", 404);
+
+            _tasks.Remove(task);
+
+            return ApiResponse<TaskResponse>.SuccessResponse(task.ToResponse(), "Task successfully deleted.");
         }
     }
 }
