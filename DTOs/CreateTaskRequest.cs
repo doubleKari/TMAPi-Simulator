@@ -4,13 +4,13 @@ using System.Text;
 
 namespace TMAPi_Simulator.DTOs
 {
-    public record CreateTaskRequest (
-        string Title, 
-        string Description, 
-        string Priority, 
-        int? AssignedToUserId, 
-        int? ProjectId, 
-        DateTime? DueDate 
-    );
-    
+    public class CreateTaskRequest
+    {
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Priority { get; set; } = string.Empty;
+        public int? AssignedToUserId { get; set; }
+        public int? ProjectId { get; set; }
+        public DateTime? DueDate { get; set; }
+    }  
 }
